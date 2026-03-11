@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import axios from 'axios';
+import api from '../../utils/api';
 import { User, Mail, Lock, CreditCard, Bell, Shield, Check, Upload } from 'lucide-react';
 
 const ProfileSettings = () => {
@@ -71,7 +71,7 @@ const handleSubmit = async (e) => {
   e.preventDefault();
   setSaving(true);
   try {
-    await axios.put('http://localhost:5000/api/user/profile', formData);
+    await api.put('/api/user/profile', formData);
     alert('Profile updated successfully!');
   } catch (error) {
    console.error('Error updating profile:', error);
@@ -90,7 +90,7 @@ const handleAvatarUpload = async (e) => {
   formData.append('avatar', file);
   
   try {
-    await axios.put('http://localhost:5000/api/user/avatar', formData);
+    await api.put('/api/user/avatar', formData);
     alert('Avatar updated successfully!');
   } catch (error) {
    console.error('Error uploading avatar:', error);

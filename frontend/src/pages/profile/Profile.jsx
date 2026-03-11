@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import axios from 'axios';
+import api from '../../utils/api';
 import Navbar from '../../components/layout/Navbar';
 import ProfileBanner from './ProfileBanner';
 import ProfileStats from './ProfileStats';
@@ -18,7 +18,7 @@ const Profile = () => {
      try {
   setLoading(true);
        // Fetch user profile data from backend
-   const response = await axios.get('http://localhost:5000/api/user/profile');
+   const response = await api.get('/api/user/profile');
   setUserData(response.data);
   setLoading(false);
      } catch (error) {

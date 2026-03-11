@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import api from '../utils/api';
 import Navbar from '../components/layout/Navbar';
 import MovieRow from '../components/movie/MovieRow';
 import FuturisticHero from '../components/home/FuturisticHero';
@@ -22,7 +22,7 @@ const Home = () => {
     useEffect(() => {
        const fetchMovies = async () => {
             try {
-               const res = await axios.get('http://localhost:5000/api/videos');
+               const res = await api.get('/api/videos');
                const movies = res.data;
                 setTrending(movies);
                 setAction(movies.filter(m => m.genre === 'Action'));

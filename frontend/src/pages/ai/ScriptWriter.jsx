@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import api from '../../utils/api';
 import Navbar from '../../components/layout/Navbar';
 import { Sparkles, Send, Copy, Download, Save, Loader2 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -23,7 +23,7 @@ const ScriptWriter = () => {
         setLoading(true);
         setError('');
         try {
-            const res = await axios.post('http://localhost:5000/api/ai/generate-script', formData);
+            const res = await api.post('/api/ai/generate-script', formData);
             setScript(res.data.content);
         } catch (err) {
             console.error(err);

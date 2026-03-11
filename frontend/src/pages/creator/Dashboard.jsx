@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import api from '../../utils/api';
 import Navbar from '../../components/layout/Navbar';
 import { Upload, Film, Image as ImageIcon, CheckCircle, Loader2, X, Wand2 } from 'lucide-react';
 import { motion } from 'framer-motion';
@@ -28,7 +28,7 @@ const CreatorDashboard = () => {
         data.append('genre', formData.genre);
 
         try {
-            await axios.post('http://localhost:5000/api/videos/upload', data);
+            await api.post('/api/videos/upload', data);
             setSuccess(true);
         } catch (err) {
             console.error(err);

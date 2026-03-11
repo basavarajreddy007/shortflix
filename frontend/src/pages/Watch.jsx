@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import api from '../utils/api';
 import { ChevronLeft, Info } from 'lucide-react';
 import Navbar from '../components/layout/Navbar';
 import { motion } from 'framer-motion';
@@ -18,7 +18,7 @@ const Watch = () => {
     useEffect(() => {
        const fetchVideo = async () => {
             try {
-               const res = await axios.get(`http://localhost:5000/api/videos/${id}`);
+               const res = await api.get(`/api/videos/${id}`);
                setVideo(res.data);
             } catch (err) {
                console.error(err);

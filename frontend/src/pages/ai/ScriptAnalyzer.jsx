@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import api from '../../utils/api';
 import Navbar from '../../components/layout/Navbar';
 import { BarChart3, Upload, FileText, Sparkles, AlertCircle, Loader2 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -17,7 +17,7 @@ const ScriptAnalyzer = () => {
         setLoading(true);
         setError('');
         try {
-            const res = await axios.post('http://localhost:5000/api/ai/analyze-script', { content });
+            const res = await api.post('/api/ai/analyze-script', { content });
             setAnalysis(res.data);
         } catch (err) {
             console.error(err);

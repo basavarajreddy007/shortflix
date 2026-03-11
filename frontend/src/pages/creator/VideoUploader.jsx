@@ -4,7 +4,7 @@ import {
   Upload, X, FileVideo, Image, Sparkles, CheckCircle, 
   AlertCircle, Loader, Wand2, Trash2, Play 
 } from 'lucide-react';
-import axios from 'axios';
+import api from '../../utils/api';
 import { useNavigate } from 'react-router-dom';
 
 const VideoUploader= () => {
@@ -228,7 +228,7 @@ const VideoUploader= () => {
         }
       };
 
-     const response = await axios.post('http://localhost:5000/api/videos/upload', uploadFormData, config);
+     const response = await api.post('/api/videos/upload', uploadFormData, config);
 
       setSuccess(true);
       setTimeout(() => {
