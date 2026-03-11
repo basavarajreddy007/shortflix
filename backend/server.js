@@ -13,6 +13,29 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+// Root Route - Welcome Message
+app.get('/', (req, res) => {
+    res.json({
+        message: 'ShortFlix Backend API is running',
+        version: '1.0.0',
+        endpoints: {
+            auth: '/api/auth',
+            videos: '/api/videos',
+            ai: '/api/ai'
+        },
+        status: 'healthy'
+    });
+});
+
+// Health Check Route
+app.get('/health', (req, res) => {
+    res.status(200).json({
+        status: 'OK',
+        timestamp: new Date().toISOString(),
+        service: 'shortflix-backend'
+    });
+});
+
 // Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/videos', videoRoutes);
